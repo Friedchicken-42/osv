@@ -75,6 +75,10 @@
   font-weight: bold;
 }
 
+.card-mod {
+  width: 40px;
+}
+
 .card-data {
   width: 40%;
 }

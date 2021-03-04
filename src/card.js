@@ -64,6 +64,26 @@ class Card extends React.Component {
 
         score.acc = (acc * 100).toFixed(2)
 
+        let enabled_mods = parseInt(score.enabled_mods)
+
+        score.mods = []
+        if (enabled_mods !== 0) {
+
+            const mod_array = ['NF', 'EZ', 'TD', 'HD', 'HR', 'SD', 'DT', 'RX', 'HT', 'NC', 'FL', 'AT', 'SO', 'AP', 'PF']
+            mod_array.forEach((el, i) => {
+                if (((enabled_mods >>> i) & 1) === 1) {
+                    score.mods.push(el)
+                }
+            })
+        }
+
+        if (score.mods.includes('DT') && score.mods.includes('NC')) {
+            score.mods.splice(score.mods.indexOf('DT'), 1)
+        }
+        if (score.mods.includes('SD') && score.mods.includes('PF')) {
+            score.mods.splice(score.mods.indexOf('SD'), 1)
+        }
+
         this.state = {
             data: data
         }
@@ -82,6 +102,7 @@ class Card extends React.Component {
                 <div className='card-center'>
                     <div className='card-score'>{score.score}</div>
                     <div className='card-username'>{score.username}</div>
+                    <div>{score.mods.map(mod => <img className='card-mod' src={process.env.PUBLIC_URL + '/mods/' + mod + '.png'} alt={mod} key={mod} />)}</div>
                 </div>
                 <div className='card-data'>
                     <div className='card-row'>
