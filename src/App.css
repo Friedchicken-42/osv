@@ -63,3 +63,7 @@ input[type="text"] {
   font-size: medium;
   padding: 15px;
 }
+
+input[type="text"]:disabled {
+  background-color: black;
+}

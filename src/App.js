@@ -20,7 +20,7 @@ const Multiplayer = () => {
 	return (
 		<div>
 			<h2>Multiplayer link</h2>
-			<input id='mp' type="text" className='fifty-percent'></input>
+			<input id='mp' type="text" className='fifty-percent' disabled placeholder="wip"></input>
 		</div>
 	)
 }
