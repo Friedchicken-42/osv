@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from 'react'
+import Beatmaps from './beatmaps'
+import Users from './users'
+import View from './view'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	return (
+		<div>
+			<h1>Osu Score Viewer</h1>
+			<Multiplayer />
+			<h4 className="line"><span>or</span></h4>
+			<Players />
+			<View />
+		</div>
+	)
 }
+
+const Multiplayer = () => {
+	return (
+		<div>
+			<h2>Multiplayer link</h2>
+			<input id='mp' type="text" className='fifty-percent'></input>
+		</div>
+	)
+}
+
+const Players = () => (
+	<div>
+		<Beatmaps />
+		<Users />
+	</div>
+)
 
 export default App;
