@@ -3,10 +3,11 @@ import './deck.css'
 
 class Data extends React.Component {
     render() {
+        const value = isNaN(this.props.value) ? 0 : this.props.value;
         return (
             <div>
                 <div className='data-header'>{this.props.name}</div>
-                <div className='data-value'>{this.props.value}</div>
+                <div className='data-value'>{value}</div>
             </div>
         )
     }

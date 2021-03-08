@@ -47,7 +47,7 @@ const User = () => {
     return (
         <div className='user-box'>
             <div>
-                <input name='user' type='text' onKeyDown={onEnter}></input>
+                <input name='user' type='text' onKeyDown={onEnter} onBlur={(e) => update_image(e.target.value)}></input>
             </div>
             <br />
             <div>
