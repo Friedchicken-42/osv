@@ -9,10 +9,8 @@ class Deck extends React.Component {
             <div className='deck'>
                 <div className='beatmap' style={{ backgroundImage: `url(https://assets.ppy.sh/beatmaps/` + beatmap.beatmapset_id + `/covers/cover.jpg)` }}>
                     <div className='beatmap-title'>{beatmap.title}</div>
-                    <div className='beatmap-data'>
-                        <div className='beatmap-version'>{beatmap.version}</div>
-                        <div className='beatmap-sr'>{beatmap.difficultyrating}</div>
-                    </div>
+                    <div className='beatmap-version'>{beatmap.version}</div>
+                    <div className='beatmap-sr'>{beatmap.difficultyrating}</div>
                 </div>
                 <div>
                     {this.props.scores

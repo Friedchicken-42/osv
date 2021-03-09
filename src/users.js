@@ -10,7 +10,7 @@ const Users = () => {
     return (
         <div>
             <h2>Usernames</h2>
-            <div className='container'>
+            <div>
                 {users}
             </div>
         </div>

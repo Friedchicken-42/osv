@@ -44,7 +44,7 @@ const Multiplayer = () => {
 	return (
 		<div>
 			<h2>Multiplayer link</h2>
-			<input id='mp' type="text" className='fifty-percent' onKeyDown={onEnter} onBlur={(e) => mp_title(e.target.value)}></input>
+			<input id='mp' type="text" className='size' onKeyDown={onEnter} onBlur={(e) => mp_title(e.target.value)}></input>
 			<h2>{title}</h2>
 		</div>
 	)

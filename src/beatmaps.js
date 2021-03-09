@@ -5,18 +5,26 @@ const Beatmaps = () => {
 
     const add_beatmap = event => setBeatmaps([...beatmaps, <Beatmap key={beatmaps.length} />])
 
+    const remove_beatmap = event => {
+        if (beatmaps.length > 0) {
+            setBeatmaps(beatmaps.slice(0, beatmaps.length - 1))
+        }
+    }
+
     return (
         <div>
             <h2>Beatmap link</h2>
             {beatmaps}
-            <button className="add" onClick={add_beatmap}>+</button></div>
+            <button className="btn" onClick={add_beatmap}>+</button>
+            <button className="btn" onClick={remove_beatmap}>-</button>
+        </div>
     )
 }
 
 const Beatmap = () => {
     return (
         <div>
-            <input name='beatmap' type="text" className='fifty-percent'></input>
+            <input name='beatmap' type="text" className='size'></input>
         </div>
     )
 }

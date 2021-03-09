@@ -92,15 +92,16 @@ class Card extends React.Component {
 
     render() {
         let score = this.props.score
-        let rank = this.props.rank ? (
-            <div className='card-rank'>
+        let rank = null;
+        if (this.props.rank) {
+            rank = (<div className='card-rank'>
                 <span>{score.rank.replace('H', '')}</span>
-            </div>
-        ) : null;
+            </div>)
+        }
         return (
-            <div className='container'>
+            <div className={'card card-' + (rank ? '3' : '2')}>
                 {rank}
-                <div className='card-center'>
+                <div>
                     <div className='card-score'>{score.score}</div>
                     <div className='card-username'>{score.username}</div>
                     <div>{score.mods.map(mod => <img className='card-mod' src={process.env.PUBLIC_URL + '/mods/' + mod + '.png'} alt={mod} key={mod} />)}</div>
@@ -115,7 +116,7 @@ class Card extends React.Component {
                         {this.state.data}
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
