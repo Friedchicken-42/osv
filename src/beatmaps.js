@@ -6,7 +6,7 @@ const Beatmaps = () => {
     const add_beatmap = event => setBeatmaps([...beatmaps, <Beatmap key={beatmaps.length} />])
 
     const remove_beatmap = event => {
-        if (beatmaps.length > 0) {
+        if (beatmaps.length > 1) {
             setBeatmaps(beatmaps.slice(0, beatmaps.length - 1))
         }
     }
