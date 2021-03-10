@@ -38,7 +38,7 @@ class View extends React.Component {
     }
 
     from_multiplayer(multiplayer, users) {
-        users.forEach(u => u.toLowerCase())
+        users = users.map(u => u.toLowerCase())
         const mp = multiplayer.split('/').slice(-1)[0]
         axios.get('https://osu.ppy.sh/api/get_match', { params: { k: key, mp: mp } })
             .then(response => {
