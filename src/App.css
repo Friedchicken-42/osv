@@ -63,6 +63,38 @@ input[type="text"]:disabled {
   background-color: black;
 }
 
+.mods {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.mods > li {
+  display: inline-block;
+}
+
+input[type="checkbox"][id^="m"] {
+  display: none;
+}
+
+.label-mod {
+  display: block;
+  position: relative;
+  margin: 4px;
+  cursor: pointer;
+}
+
+label img {
+  height: 42px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked + label img {
+  transform: scale(1.1) rotate(10deg);
+  -webkit-transform: scale(1.1) rotate(10deg);
+  -ms-transform: scale(1.1) rotate(10deg);
+}
+
 @media only screen and (max-width: 800px) {
   .size {
     width: 80%;

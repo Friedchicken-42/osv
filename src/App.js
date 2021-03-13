@@ -50,10 +50,25 @@ const Multiplayer = () => {
 	)
 }
 
+const Mods = () => {
+	const mods = { 'NM': 0, 'NF': 1, 'EZ': 2, 'HR': 16, 'SD': 32, 'PF': 16416, 'DT': 64, 'NC': 576, 'HD': 8, 'FL': 1024, 'SO': 4096 };
+	return (
+		<ul className="mods">
+			{Object.entries(mods).map(([mod, value], i) => (
+				<li key={i}>
+					<input type="checkbox" id={'m' + i} value={value} />
+					<label className="label-mod" htmlFor={'m' + i}><img src={process.env.PUBLIC_URL + '/mods/' + mod + '.png'} alt={mod} /> </label>
+				</li>
+			))}
+		</ul>
+	)
+}
+
 const Players = () => (
 	<div>
 		<Beatmaps />
 		<Users />
+		<Mods />
 	</div>
 )
 

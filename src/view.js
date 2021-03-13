@@ -15,6 +15,13 @@ class View extends React.Component {
     }
 
     from_beatmaps(users, beatmaps) {
+        let mods = -1;
+        let boxes = document.querySelectorAll('input[type="checkbox"]:checked')
+        if (boxes.length > 0) mods = 0
+        console.log(boxes)
+        boxes.forEach(m => mods += parseInt(m.value))
+        console.log(mods)
+
         const promises = beatmaps.map(beatmap_url => {
             const x = beatmap_url.split('/').splice(4)
             let mode = x[0].split('#')[1]
@@ -26,7 +33,7 @@ class View extends React.Component {
             responses.forEach(r => {
                 const beatmap = r.data[0]
                 beatmap.difficultyrating = parseFloat(beatmap.difficultyrating).toFixed(2);
-                const promises = users.map(user => axios.get('https://osu.ppy.sh/api/get_scores', { params: { k: key, b: beatmap.beatmap_id, m: beatmap.mode, u: user, type: 'string' } }))
+                const promises = users.map(user => axios.get('https://osu.ppy.sh/api/get_scores', { params: { k: key, b: beatmap.beatmap_id, m: beatmap.mode, u: user, type: 'string', mods: mods } }))
                 axios.all(promises).then(responses => {
                     let scores = []
                     responses.forEach(r => r.data.forEach(s => scores.push(s)))
