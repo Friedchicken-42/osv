@@ -18,9 +18,7 @@ class View extends React.Component {
         let mods = -1;
         let boxes = document.querySelectorAll('input[type="checkbox"]:checked')
         if (boxes.length > 0) mods = 0
-        console.log(boxes)
         boxes.forEach(m => mods += parseInt(m.value))
-        console.log(mods)
 
         const promises = beatmaps.map(beatmap_url => {
             const x = beatmap_url.split('/').splice(4)
@@ -37,7 +35,8 @@ class View extends React.Component {
                 axios.all(promises).then(responses => {
                     let scores = []
                     responses.forEach(r => r.data.forEach(s => scores.push(s)))
-                    this.setState({ decks: [...this.state.decks, <Deck beatmap={beatmap} scores={scores} rank={true} />] })
+                    let deck = <Deck beatmap={beatmap} scores={scores} rank={true} />
+                    this.setState({ decks: [...this.state.decks, deck] })
                 })
             })
         })

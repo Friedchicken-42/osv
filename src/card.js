@@ -121,4 +121,13 @@ class Card extends React.Component {
     }
 }
 
-export default Card;
+const Empty = () => {
+    return (
+        <div className='card card-2'>
+            <div className='card-rank'>?</div>
+            <div className='card-score'>No score found</div>
+        </div>
+    )
+}
+
+export { Card, Empty };
