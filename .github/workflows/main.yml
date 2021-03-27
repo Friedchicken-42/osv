@@ -18,12 +18,26 @@ jobs:
         
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-      - name: setup
-        uses: actions/setup-node@v1
+          
+      - name: setup node
+      - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - uses: fregante/setup-git-user@v1
-      - run: npm run deploy
+          
+      - name: install
+        run: npm install
+        
+      - name: build
+        run: npm run build
+      
+      - name: deploy
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          npm run deploy
+        env:
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
