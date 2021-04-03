@@ -3,11 +3,10 @@ import './deck.css'
 
 class Data extends React.Component {
     render() {
-        const value = isNaN(this.props.value) ? 0 : this.props.value;
         return (
             <div>
                 <div className='data-header'>{this.props.name}</div>
-                <div className='data-value'>{value}</div>
+                <div className='data-value'>{this.props.value}</div>
             </div>
         )
     }
@@ -98,6 +97,7 @@ class Card extends React.Component {
                 <span>{score.rank.replace('H', '')}</span>
             </div>)
         }
+
         return (
             <div className={'card card-' + (rank ? '3' : '2')}>
                 {rank}
@@ -109,8 +109,8 @@ class Card extends React.Component {
                 <div className='card-data'>
                     <div className='card-row'>
                         <Data key={0} name='Accuracy' value={score.acc} />
-                        <Data key={1} name='Max Combo' value={score.maxcombo} />
-                        <Data key={2} name='PP' value={Math.round(score.pp)} />
+                        <Data key={1} name='Max Combo' value={score.maxcombo + (score.perfect === "1" ? " (FC)" : "")} />
+                        <Data key={2} name='PP' value={typeof score.pp === "number" ? Math.round(score.pp) : score.pp} />
                     </div>
                     <div className='card-row'>
                         {this.state.data}

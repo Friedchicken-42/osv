@@ -78,6 +78,7 @@ class View extends React.Component {
                         scores.forEach(score => {
                             score.username = players_name[score.user_id]
                             if (game.mods !== "0") score.enabled_mods = parseInt(game.mods)
+                            score.pp = "-"
                         })
                         scores = scores.map(score => {
                             if (users.length === 0 || users.includes(score.username.toLowerCase())) { return score; }
